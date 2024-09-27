@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Test App" thread-count="2" parallel="classes">
+    <test name="Smoke">
+        <!--<groups>
+            <define name="smoke"></define>
+        </groups>-->
+       <!-- <parameter name="env" value="qa"></parameter>-->
+        <classes>
+            <class name="AppTests"> 
+            </class>
+            <class name="OrderTest" />
+
+        </classes>
+    </test>
+  <!--  <test name="Order">
+        <groups>
+            <define name="smoke"></define>
+        </groups>
+        <classes>
+            <class name="AppTests">
+            </class>
+            <class name="OrderTest" />
+
+        </classes>
+    </test>-->
+</suite>
