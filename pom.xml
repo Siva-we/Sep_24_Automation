@@ -28,7 +28,6 @@
             <version>5.0.0</version>
             <scope>compile</scope>
         </dependency>
-
         <!-- https://mvnrepository.com/artifact/org.testng/testng -->
         <dependency>
             <groupId>org.testng</groupId>
@@ -37,7 +36,6 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
     <build>
     <pluginManagement>
     <plugins>
