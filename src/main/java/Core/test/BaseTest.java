@@ -73,16 +73,16 @@ public class BaseTest {
         Test test = method.getAnnotation(Test.class);
 
         if (result.getStatus() == ITestResult.SUCCESS) {
-            ReportUtil.PASS("Test is Passed");
+            ReportUtil.PASS(driver, "Test Passed");
             System.out.println(result.getMethod().getMethodName() + ": Test is PASSED");
         } else if (result.getStatus() == ITestResult.FAILURE) {
-            ReportUtil.FAIL(result.getThrowable().getMessage());
+            ReportUtil.FAIL(driver, result.getThrowable().getMessage());
             System.out.println(result.getMethod().getMethodName() + ": Test is FAILED");
-            ReportUtil.FAIL(driver, "Test is failed");
+            ReportUtil.FAIL("Test failed");
         } else if (result.getStatus() == ITestResult.SKIP) { // Test passed with out any interruption
-            ReportUtil.FAIL(result.getThrowable().getMessage());
+            ReportUtil.FAIL(driver, result.getThrowable().getMessage());
             System.out.println(result.getMethod().getMethodName() + ": Test is SKIPPED");
-            ReportUtil.FAIL(driver, result.getThrowable().getLocalizedMessage());
+            //ReportUtil.FAIL(driver, result.getThrowable().getLocalizedMessage());
             ReportUtil.FAIL("Test is Skipped");
         }
 

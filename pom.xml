@@ -51,6 +51,7 @@
                 <systemPropertyVariables>
                     <env>qa</env>
                     <browser>chrome</browser>
+                    <screenshots>true</screenshots>
                 </systemPropertyVariables>
             </configuration>
         </plugin>

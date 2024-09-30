@@ -32,7 +32,7 @@ public class ReportUtil {
 
     public void initializeReport(String reportName, String reportPath, String projectName) {
         if(extent == null) {
-            htmlReporter = new ExtentHtmlReporter(reportPath+"\\"+reportName+".html");
+            htmlReporter = new ExtentHtmlReporter(reportPath+"\\"+reportName+"_"+getDateTimeString()+".html");
             extent = new ExtentReports();
             extent.attachReporter(htmlReporter);
             htmlReporter.config().setChartVisibilityOnOpen(true);

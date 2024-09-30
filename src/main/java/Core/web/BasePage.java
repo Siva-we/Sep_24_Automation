@@ -92,6 +92,12 @@ public abstract class BasePage {
         wait.until(ExpectedConditions.presenceOfElementLocated(locator));
     }
 
+    public void waitForElementByFluentWait(By locator, int timeout) {
+        FluentWait wait = new FluentWait(driver).withTimeout(Duration.ofSeconds(timeout))
+                .pollingEvery(Duration.ofSeconds(5)).ignoring(NoSuchElementException.class);
+        wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+    }
+
     // get elements by locator
     public List<WebElement> getElements(By locator, String controlName) {
         wait = new WebDriverWait(getDriver(), Duration.ofSeconds(Waits.EXPLICIT_WAIT));
@@ -109,6 +115,7 @@ public abstract class BasePage {
             hardWait(1);
             jsClickElement(locator, controlName);
         }
+        ReportUtil.INFO("Clicked on "+ controlName);
     }
 
     // click element with wait
@@ -120,7 +127,7 @@ public abstract class BasePage {
             hardWait(1);
             jsClickElement(locator, controlName);
         }
-        // ReportLog.INFO(driver, "User clicked on " + controlName);
+        ReportLog.INFO(driver, "User clicked on " + controlName);
     }
 
     // click element using java script
@@ -135,6 +142,7 @@ public abstract class BasePage {
             hardWait(1);
             clickElement(locator, controlName);
         }
+        ReportUtil.INFO("Clicked on "+ controlName);
     }
 
     // click on element with wait
@@ -148,37 +156,41 @@ public abstract class BasePage {
             hardWait(1);
             clickElement(locator, controlName);
         }
+        ReportUtil.INFO("Clicked on "+ controlName);
     }
 
     // click element using actions
     public void actionsClickElement(By locator, String controlName) {
         Actions actions = new Actions(driver);
         actions.click(getElement(locator, controlName));
-
+        ReportUtil.INFO("Clicked on :" + controlName);
     }
 
     public void actionsClickElement(By locator, String controlName, int waitTimeOut) {
+        waitForElementByFluentWait(locator);
         Actions actions = new Actions(driver);
         actions.click(getElement(locator, controlName));
-
+        ReportUtil.INFO("clicked on " + controlName);
     }
 
     public void rightClickElement(By locator, String controlName) {
         Actions actions = new Actions(driver);
         actions.contextClick(getElement(locator, controlName)).perform();
+        ReportUtil.INFO("Right clicked on " + controlName);
     }
 
     // move mouse and click
     public void moveMouseAndClick(By locator, String controlName) {
         Actions actions = new Actions(driver);
         actions.moveToElement(getElement(locator, controlName)).click().perform();
+        ReportUtil.INFO("Move mouse and click on "+ controlName);
     }
 
     // enter text into text box
     public void enterText(By locator, String content, String controlName) {
         Assert.assertTrue(getElement(locator, controlName).isEnabled(), controlName + " is not enabled");
         getElement(locator, controlName).sendKeys(content);
-        ReportUtil.INFO("Entering text box with: " + controlName);
+        ReportUtil.INFO("Entering text in "+ controlName +" as: " + content);
     }
 
     // verify staleness of element
