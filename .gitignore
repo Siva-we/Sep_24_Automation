@@ -10,6 +10,7 @@
 
 # Maven
 target/
+Reports/
 
 # JetBrains IDE
 .idea/

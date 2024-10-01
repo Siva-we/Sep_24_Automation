@@ -28,10 +28,11 @@ public class LoginPage extends BasePage {
     }
 
     //methods
-    public void loginToApplication(String username, String password){
+    public DashBoardPage loginToApplication(String username, String password){
         enterText(txtUserName, username, "Username Textbox");
         enterText(txtPassword, password, "Password Textbox");
         clickElement(btnLogin, "Login Button");
+        return new DashBoardPage(driver);
     }
 
 }
