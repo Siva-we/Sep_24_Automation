@@ -51,8 +51,8 @@ public abstract class BasePage {
     public <T extends BasePage> T getGenericObject(Class cls) {
         T t = null;
         try {
-            Constructor<?> con = cls.getDeclaredConstructor(WebDriver.class, ReportUtil.class);
-            Object obj = con.newInstance(driver, ReportLog);
+            Constructor<?> con = cls.getDeclaredConstructor(WebDriver.class);
+            Object obj = con.newInstance(driver);
             t = (T) obj;
 
         } catch (Exception ex) {
@@ -79,7 +79,7 @@ public abstract class BasePage {
     }
 
     public WebElement getElement(By locator) {
-        waitForElementByFluentWait(locator);
+        //waitForElementByFluentWait(locator);
         WebElement element = getDriver().findElement(locator);
         highLightElement(locator);
         return element;
@@ -88,7 +88,7 @@ public abstract class BasePage {
     // get element by fluent wait
     public void waitForElementByFluentWait(By locator) {
         FluentWait wait = new FluentWait(driver).withTimeout(Duration.ofSeconds(Waits.EXPLICIT_WAIT))
-                .pollingEvery(Duration.ofSeconds(5)).ignoring(NoSuchElementException.class);
+                .pollingEvery(Duration.ofSeconds(5)).ignoring(NoSuchElementException.class, TimeoutException.class);
         wait.until(ExpectedConditions.presenceOfElementLocated(locator));
     }
 

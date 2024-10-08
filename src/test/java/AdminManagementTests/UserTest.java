@@ -15,5 +15,6 @@ public class UserTest  extends BaseTest {
         DashBoardPage dashBoardPage = loginPage.loginToApplication("Admin", "admin123");
         UserManagementPage userManagementPage = dashBoardPage.selectMenuOption("Admin", UserManagementPage.class);
         SaveUserPage saveUserPage = userManagementPage.clickAdd();
+        saveUserPage.fillAndSubmitFormForUserRole("Admin");
     }
 }

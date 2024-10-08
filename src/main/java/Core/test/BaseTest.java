@@ -96,7 +96,7 @@ public class BaseTest {
     }
 
     // loading environment data from core.test/resources
-    void loadEnvironmentData(String environment) {
+    public void loadEnvironmentData(String environment) {
 
         try {
             FileReader reader = new FileReader(projectPath + "\\src\\test\\resources\\" + environment + ".properties");
@@ -123,7 +123,7 @@ public class BaseTest {
 
     // open browser with specified version in pom.xml
     // adding implicit wait to driver and maximize browser
-    void openBrowser(String browserName) {
+    public void openBrowser(String browserName) {
         switch (browserName.toLowerCase()) {
             case "chrome":
                 //WebDriverManager.chromedriver().setup();
@@ -157,7 +157,7 @@ public class BaseTest {
     }
 
     // to get generic object as return type
-    protected <T extends BasePage> T launchApplication(Class cls) {
+    public <T extends BasePage> T launchApplication(Class cls) {
         String appUrl = String.valueOf(Common.getEnvData("appurl"));
         driver.get(appUrl);
         report.PASS("Application is launched: " + appUrl + " on " + browserName + "(" + browserVersion

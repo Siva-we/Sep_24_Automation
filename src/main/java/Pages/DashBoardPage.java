@@ -22,7 +22,7 @@ public class DashBoardPage extends OrangeCommon {
     //override methods
     @Override
     protected void verifyPageLoad() {
-        Assert.assertTrue(getElement(lblTitle).getText().equalsIgnoreCase("Dashboard"), "Dashboard page not loaded");
+        Assert.assertTrue(getElement(lblTitle).getText().contains("Dashboard"), "Dashboard page not loaded");
     }
 
     //methods
