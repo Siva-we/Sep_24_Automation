@@ -8,21 +8,8 @@
         </groups>-->
        <!-- <parameter name="env" value="qa"></parameter>-->
         <classes>
-            <class name="AppTests"> 
-            </class>
-            <class name="OrderTest" />
+            <class name="AdminManagementTests.UserTest" />
 
         </classes>
     </test>
-  <!--  <test name="Order">
-        <groups>
-            <define name="smoke"></define>
-        </groups>
-        <classes>
-            <class name="AppTests">
-            </class>
-            <class name="OrderTest" />
-
-        </classes>
-    </test>-->
 </suite>

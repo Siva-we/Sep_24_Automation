@@ -96,7 +96,7 @@ public class BaseTest {
     }
 
     // loading environment data from core.test/resources
-    public void loadEnvironmentData(String environment) {
+    void loadEnvironmentData(String environment) {
 
         try {
             FileReader reader = new FileReader(projectPath + "\\src\\test\\resources\\" + environment + ".properties");

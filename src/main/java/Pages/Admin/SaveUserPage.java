@@ -24,10 +24,6 @@ public class SaveUserPage extends OrangeCommon {
     }
 
     //methods
-    public void fillAndSubmitFormForUserRole(String userType){
-        selectDropDownControl("User Role", userType);
-        hardWait(5);
-        selectDropDownControl("Status", "Enabled");
-    }
+
 
 }

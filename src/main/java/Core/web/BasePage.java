@@ -14,6 +14,7 @@ import Core.reporting.ReportUtil;
 import java.lang.reflect.Constructor;
 import java.security.SecureRandom;
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class BasePage {
@@ -79,16 +80,23 @@ public abstract class BasePage {
     }
 
     public WebElement getElement(By locator) {
-        //waitForElementByFluentWait(locator);
+        waitForElementByFluentWait(locator);
         WebElement element = getDriver().findElement(locator);
         highLightElement(locator);
         return element;
     }
 
+    protected List<WebElement> getElements(By locator) {
+        wait = new WebDriverWait(getDriver(), Duration.ofSeconds(Waits.EXPLICIT_WAIT));
+        waitForElementByFluentWait(locator);
+        List<WebElement> elements = getDriver().findElements(locator);
+        return elements;
+    }
+
     // get element by fluent wait
     public void waitForElementByFluentWait(By locator) {
         FluentWait wait = new FluentWait(driver).withTimeout(Duration.ofSeconds(Waits.EXPLICIT_WAIT))
-                .pollingEvery(Duration.ofSeconds(5)).ignoring(NoSuchElementException.class, TimeoutException.class);
+                .pollingEvery(Duration.ofSeconds(5)).ignoring(NoSuchElementException.class);
         wait.until(ExpectedConditions.presenceOfElementLocated(locator));
     }
 
@@ -420,5 +428,11 @@ public abstract class BasePage {
         // Dragged and dropped.
         act.dragAndDrop(From, To).build().perform();
 
+    }
+
+    protected List<String> getTextFromList(List<WebElement> list){
+        List<String> listString = new ArrayList<>();
+        list.stream().forEach(x -> listString.add(x.getText()));
+        return listString;
     }
 }
