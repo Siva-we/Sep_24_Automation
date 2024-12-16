@@ -7,6 +7,8 @@ import org.testng.Assert;
 
 public class DashBoardPage extends OrangeCommon {
 
+    
+
     //variable
 
     //locators
