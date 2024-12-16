@@ -15,4 +15,10 @@ public class JobListTest extends BaseTest {
         LoginPage loginPage = launchApplication(LoginPage.class);
 
     }
+
+    @Test(testName = "Job list column title are unique")
+    public void ValidateColumnTitlesAreunique() {
+        LoginPage loginPage = launchApplication(LoginPage.class);
+
+    }
 }
