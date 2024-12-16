@@ -70,7 +70,7 @@
                 <systemPropertyVariables>
                     <env>qa</env>
                     <browser>chrome</browser>
-                    <screenshots>true</screenshots>
+                    <screenshots>false</screenshots>
                 </systemPropertyVariables>
             </configuration>
         </plugin>
